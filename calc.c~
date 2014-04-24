@@ -1,0 +1,31 @@
+#include <stdio.h>
+#define MAX 50;
+main()
+{
+  FILE *fp;
+  int i, j, a;
+  int grade[5][MAX];
+
+  fp = fopen("grade.csv", "r");
+  if(fp == NULL)
+    {
+      printf("file open error.\n");
+      exit(0);
+    }
+  for(i=0; i<5; i++)
+    {
+      for(j=0; j<MAX; j++)
+	{
+	  a = fscanf(fp, "%d", &grade[i][j]);
+	  if(a == EOF)break;
+	}
+    }
+  for(i=0; i<5; i++)
+    {
+      for(j=0; j<MAX; j++)
+	{
+	  printf("%d", grade[i][j]);
+	}
+    }
+  fclose(fp);
+}
