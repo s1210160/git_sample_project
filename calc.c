@@ -5,8 +5,8 @@ int dtoi(char);
 main()
 {
   FILE *fp;
-  int i, j, a;
-  char non[MAX], grade[5][MAX];
+  int i, j, a, b, c, d;
+  char non[MAX], grade[MAX][MAX];
 
   fp = fopen("grade.csv", "r");
   if(fp == NULL)
@@ -24,9 +24,13 @@ main()
   while(1)
     {
       b = fgetc(fp);
-      if(b >= '0' && b <= '9')
+      for(i=0; i<MAX; i++)
 	{
-	  
+	  for(j=0; j<MAX; j++)
+	    {
+	      c = fscanf(fp, "%c", &grade[i][j]);
+	      if(c == '\n')break;
+	    }
     }
     }
   for(i=0; i<5; i++)
